@@ -3,574 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EdAthena Presentation</title>
+    <title>EdAthena Master Class - AI/ML Excellence</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
-        .slide {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            min-height: 600px;
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .slide.active {
-            display: block;
-            opacity: 1;
-        }
         .gradient-bg {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
         }
-        .course-card {
-            background: white;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-left: 4px solid #3b82f6;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        .card {
+            transition: transform 0.3s ease-in-out;
         }
-        .benefit-card {
-            background: #f8fafc;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            margin-top: 1rem;
+        .card:hover {
+            transform: translateY(-5px);
         }
-        .nav-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #cbd5e1;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 4px 0;
+        .program-badge {
+            background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);
         }
-        .nav-dot.active {
-            background: #3b82f6;
-            transform: scale(1.2);
+        .highlight-text {
+            background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .price-tag {
+            background: linear-gradient(90deg, #10B981 0%, #059669 100%);
+        }
+        .duration-tag {
+            background: linear-gradient(90deg, #6366F1 0%, #4F46E5 100%);
         }
     </style>
 </head>
-<body class="bg-gray-100">
-    <div class="max-w-6xl mx-auto p-4">
-        <!-- Slides Container -->
-        <div id="slides-container" class="relative">
-            <!-- Title Slide -->
-            <div class="slide active">
-                <div class="gradient-bg rounded-xl p-12 text-white text-center h-full flex flex-col items-center justify-center">
-                    <img src="w9.png" alt="EdAthena Logo" class="w-32 mb-8">
-                    <h1 class="text-5xl font-bold mb-4">EdAthena Academy</h1>
-                    <h2 class="text-2xl mb-8">Empowering Future Tech Leaders</h2>
-                    <p class="text-xl">Special Presentation for Arunai Engineering College, Thiruvannamalai</p>
-                </div>
-            </div>
-
-            <!-- Instructor Introduction -->
-            <div class="slide">
-                <div class="p-12">
-                    <h2 class="text-3xl font-bold text-blue-600 mb-8">Meet Your Instructor</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="col-span-1">
-                            <div class="bg-blue-50 rounded-xl p-6 text-center">
-                                <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
-                                    <img src="w10.jpg" alt="Sudhir" class="w-full h-full object-cover">
-                                </div>
-                                <h3 class="text-xl font-bold text-gray-800">Sudhir Giri</h3>
-                                <p class="text-gray-600">Lead AI Architect</p>
-                            </div>
-                        </div>
-                        <div class="col-span-2">
-                            <div class="course-card">
-                                <div class="flex items-center mb-4">
-                                    <i data-lucide="award" class="w-6 h-6 text-blue-500 mr-3"></i>
-                                    <h3 class="text-xl font-semibold">Professional Background</h3>
-                                </div>
-                                <ul class="list-disc pl-5 space-y-2 text-gray-700">
-                                    <li>20+ years of experience driving technological innovation and digital transformation</li>
-                                    <li>Expertise in AI solutions design and enterprise ML systems</li>
-                                    <li>Strong background in MLOps and fintech solutions</li>
-                                    <li>Lead architect for multiple product-lines serving innovation in cloud solutions</li>
-                                </ul>
-                            </div>
-                            <div class="course-card mt-4">
-                                <div class="flex items-center mb-4">
-                                    <i data-lucide="book-open" class="w-6 h-6 text-blue-500 mr-3"></i>
-                                    <h3 class="text-xl font-semibold">Areas of Expertise</h3>
-                                </div>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div class="bg-blue-50 p-4 rounded-lg">
-                                        <ul class="list-disc pl-5 text-gray-700">
-                                            <li>AI & Machine Learning</li>
-                                            <li>Data Analytics</li>
-                                            <li>Cloud Solutions</li>
-                                        </ul>
-                                    </div>
-                                    <div class="bg-blue-50 p-4 rounded-lg">
-                                        <ul class="list-disc pl-5 text-gray-700">
-                                            <li>Enterprise Architecture</li>
-                                            <li>Digital Transformation</li>
-                                            <li>Technical Leadership</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Welcome Slide -->
-            <div class="slide">
-                <div class="p-12 text-center">
-                    <div class="flex items-center justify-center mb-8">
-                        <i data-lucide="heart" class="w-8 h-8 text-red-500 mr-3"></i>
-                        <h2 class="text-3xl font-bold text-blue-600">Happy Valentine's Day!</h2>
-                    </div>
-                    <div class="bg-blue-50 rounded-xl p-8 mb-8">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Welcome to the World of AI & ML</h3>
-                        <p class="text-xl text-gray-700">We're excited to embark on this learning journey with the bright minds of Arunai Engineering College!</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Two-Day Schedule -->
-            <div class="slide">
-                <div class="p-12">
-                    <h2 class="text-3xl font-bold text-blue-600 mb-8">What's in Store for You</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="course-card">
-                            <div class="flex items-center mb-4">
-                                <i data-lucide="calendar" class="w-6 h-6 text-blue-500 mr-3"></i>
-                                <h3 class="text-xl font-semibold">Day 1 - Today</h3>
-                            </div>
-                            <ul class="list-disc pl-5 space-y-2 text-gray-700">
-                                <li>AI Fundamentals Deep Dive</li>
-                                <li>Hands-on ML Projects</li>
-                                <li>Introduction to MLOps</li>
-                                <li>Interactive Q&A Sessions</li>
-                            </ul>
-                        </div>
-                        <div class="course-card">
-                            <div class="flex items-center mb-4">
-                                <i data-lucide="calendar" class="w-6 h-6 text-blue-500 mr-3"></i>
-                                <h3 class="text-xl font-semibold">Day 2 - Tomorrow</h3>
-                            </div>
-                            <ul class="list-disc pl-5 space-y-2 text-gray-700">
-                                <li>Advanced AI Concepts</li>
-                                <li>Real-world Applications</li>
-                                <li>Career Guidance</li>
-                                <li>Project Showcase</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- AI Career Opportunities -->
-            <div class="slide">
-                <div class="p-12">
-                    <h2 class="text-3xl font-bold text-blue-600 mb-8">AI Career Landscape</h2>
-                    <div class="grid grid-cols-1 gap-6">
-                        <div class="course-card">
-                            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Job Opportunities in Chennai</h3>
-                            <ul class="list-disc pl-5 space-y-2 text-gray-700 mb-4">
-                                <li>Major Tech Companies: TCS, Infosys, Wipro, CTS</li>
-                                <li>AI Startups: Freshworks, Zoho, Chargebee</li>
-                                <li>Research Centers: IIT Madras Research Park</li>
-                                <li>Average Starting Salary: 5-8 LPA for ML Engineers</li>
-                            </ul>
-                        </div>
-                        <div class="course-card">
-                            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Career Paths</h3>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="bg-blue-50 p-4 rounded-lg">
-                                    <h4 class="font-medium text-blue-600 mb-2">Entry Level</h4>
-                                    <ul class="list-disc pl-5 text-gray-700">
-                                        <li>Jr. ML Engineer</li>
-                                        <li>Data Scientist</li>
-                                        <li>AI Developer</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-blue-50 p-4 rounded-lg">
-                                    <h4 class="font-medium text-blue-600 mb-2">3-5 Years</h4>
-                                    <ul class="list-disc pl-5 text-gray-700">
-                                        <li>Sr. ML Engineer</li>
-                                        <li>AI Architect</li>
-                                        <li>Team Lead</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Industry Benefits -->
-            <div class="slide">
-                <div class="p-12">
-                    <h2 class="text-3xl font-bold text-blue-600 mb-8">Why Choose AI as Your Career?</h2>
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="course-card">
-                            <div class="flex items-center mb-4">
-                                <i data-lucide="trending-up" class="w-6 h-6 text-blue-500 mr-3"></i>
-                                <h3 class="text-xl font-semibold">Growing Demand</h3>
-                            </div>
-                            <p class="text-gray-700 mb-4">AI jobs expected to grow by 40% in next 3 years. Companies actively hiring ML engineers and AI specialists.</p>
-                        </div>
-                        <div class="course-card">
-                            <div class="flex items-center mb-4">
-                                <i data-lucide="indian-rupee" class="w-6 h-6 text-blue-500 mr-3"></i>
-                                <h3 class="text-xl font-semibold">Competitive Salaries</h3>
-                            </div>
-                            <p class="text-gray-700 mb-4">AI professionals command 50% higher salaries than traditional IT roles. Rapid career growth potential.</p>
-                        </div>
-                        <div class="course-card">
-                            <div class="flex items-center mb-4">
-                                <i data-lucide="globe" class="w-6 h-6 text-blue-500 mr-3"></i>
-                                <h3 class="text-xl font-semibold">Global Opportunities</h3>
-                            </div>
-                            <p class="text-gray-700 mb-4">Work with international teams. Remote work opportunities. Access to global tech community.</p>
-                        </div>
-                        <div class="course-card">
-                            <div class="flex items-center mb-4">
-                                <i data-lucide="rocket" class="w-6 h-6 text-blue-500 mr-3"></i>
-                                <h3 class="text-xl font-semibold">Innovation</h3>
-                            </div>
-                            <p class="text-gray-700 mb-4">Be at the forefront of technology. Work on cutting-edge projects. Shape the future of technology.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- AI Advanced Track -->
-            <div class="slide">
-                <div class="p-12">
-                    <h2 class="text-3xl font-bold text-blue-600 mb-6">AI Advanced Track</h2>
-                    <div class="course-card">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">AI201 - AI Advanced</h3>
-                        <div class="grid grid-cols-2 gap-4 mb-4">
-                            <div>
-                                <span class="font-medium">Level:</span> Intermediate
-                            </div>
-                            <div>
-                                <span class="font-medium">Duration:</span> 16 Weeks
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <h4 class="font-medium mb-2">Topics covered:</h4>
-                            <ul class="list-disc pl-5 space-y-1 text-gray-700">
-                                <li>Reinforcement Learning</li>
-                                <li>Natural Language Processing</li>
-                                <li>Computer Vision</li>
-                                <li>Neural Networks</li>
-                            </ul>
-                        </div>
-                        <div class="benefit-card">
-                            <h4 class="font-medium text-blue-600 mb-2">Course Benefits:</h4>
-                            <p class="text-gray-700">Master cutting-edge AI technologies through hands-on projects. Build practical applications in computer vision and NLP. Gain expertise in implementing neural networks and reinforcement learning systems. Perfect for those aiming to become AI engineers or researchers.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- AI Expert Track -->
-            <div class="slide">
-                <div class="p-12">
-                    <h2 class="text-3xl font-bold text-blue-600 mb-6">AI Expert Track</h2>
-                    <div class="course-card">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">AI301 - AI Expert</h3>
-                        <div class="grid grid-cols-2 gap-4 mb-4">
-                            <div>
-                                <span class="font-medium">Level:</span> Advanced
-                            </div>
-                            <div>
-                                <span class="font-medium">Duration:</span> 24 Weeks
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <h4 class="font-medium mb-2">Topics covered:</h4>
-                            <ul class="list-disc pl-5 space-y-1 text-gray-700">
-                                <li>Generative AI</li>
-                                <li>Large Language Models</li>
-                                <li>Portfolio Project</li>
-                            </ul>
-                        </div>
-                        <div class="benefit-card">
-                            <h4 class="font-medium text-blue-600 mb-2">Course Benefits:</h4>
-                            <p class="text-gray-700">Become an AI expert capable of building advanced systems. Work with cutting-edge technologies like LLMs and Generative AI. Create a comprehensive portfolio showcasing your expertise. Prepare for leadership roles in AI development and research.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ML Foundation -->
-            <div class="slide">
-                <div class="p-12">
-                    <h2 class="text-3xl font-bold text-blue-600 mb-6">Machine Learning Foundation</h2>
-                    <div class="course-card">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">ML101 - ML Foundation</h3>
-                        <div class="grid grid-cols-2 gap-4 mb-4">
-                            <div>
-                                <span class="font-medium">Level:</span> Basic
-                            </div>
-                            <div>
-                                <span class="font-medium">Duration:</span> 12 Weeks
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <h4 class="font-medium mb-2">Topics covered:</h4>
-                            <ul class="list-disc pl-5 space-y-1 text-gray-700">
-                                <li>Data Manipulation</li>
-                                <li>Basic Neural Networks, TensorFlow and PyTorch</li>
-                                <li>ML Model Visualization</li>
-                                <li>Deep Learning Basics</li>
-                            </ul>
-                        </div>
-                        <div class="benefit-card">
-                            <h4 class="font-medium text-blue-600 mb-2">Course Benefits:</h4>
-                            <p class="text-gray-700">Build a strong foundation in Machine Learning fundamentals. Learn industry-standard tools and frameworks. Develop practical skills in data manipulation and visualization. Start your journey towards becoming an ML engineer.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ML Advanced -->
-            <div class="slide">
-                <div class="p-12">
-                    <h2 class="text-3xl font-bold text-blue-600 mb-6">Machine Learning Advanced</h2>
-                    <div class="course-card">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">ML201 - ML Advanced</h3>
-                        <div class="grid grid-cols-2 gap-4 mb-4">
-                            <div>
-                                <span class="font-medium">Level:</span> Intermediate
-                            </div>
-                            <div>
-                                <span class="font-medium">Duration:</span> 16 Weeks
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <h4 class="font-medium mb-2">Topics covered:</h4>
-                            <ul class="list-disc pl-5 space-y-1 text-gray-700">
-                                <li>Advanced ML Algorithms</li>
-                                <li>Deep Learning Advanced</li>
-                                <li>Model Optimization & Deployment</li>
-                                <li>MLOps Fundamentals</li>
-                            </ul>
-                        </div>
-                        <div class="benefit-card">
-                            <h4 class="font-medium text-blue-600 mb-2">Course Benefits:</h4>
-                            <p class="text-gray-700">Master advanced ML concepts and deployment strategies. Learn to optimize and scale ML systems. Gain hands-on experience with MLOps practices. Prepare for roles in ML engineering and deployment.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Data Analytics Foundation -->
-            <div class="slide">
-                <div class="p-12">
-                    <h2 class="text-3xl font-bold text-blue-600 mb-6">Data Analytics Foundation</h2>
-                    <div class="course-card">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">DA101 - DA Foundation</h3>
-                        <div class="grid grid-cols-2 gap-4 mb-4">
-                            <div>
-                                <span class="font-medium">Level:</span> Basic
-                            </div>
-                            <div>
-                                <span class="font-medium">Duration:</span> 12 Weeks
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <h4 class="font-medium mb-2">Topics covered:</h4>
-                            <ul class="list-disc pl-5 space-y-1 text-gray-700">
-                                <li>Development Environment & Basic Tools</li>
-                                <li>Data Manipulation & SQL Fundamentals</li>
-                                <li>Visualization & BI Tools Basics</li>
-                                <li>Business Analytics Foundation</li>
-                            </ul>
-                        </div>
-                        <div class="benefit-card">
-                            <h4 class="font-medium text-blue-600 mb-2">Course Benefits:</h4>
-                            <p class="text-gray-700">Learn essential data analysis tools and techniques. Master SQL and data manipulation skills. Develop expertise in data visualization. Start your career in data analytics with hands-on projects.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Data Analytics Advanced -->
-            <div class="slide">
-                <div class="p-12">
-                    <h2 class="text-3xl font-bold text-blue-600 mb-6">Data Analytics Advanced</h2>
-                    <div class="course-card">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">DA201 - DA Advanced</h3>
-                        <div class="grid grid-cols-2 gap-4 mb-4">
-                            <div>
-                                <span class="font-medium">Level:</span> Intermediate
-                            </div>
-                            <div>
-                                <span class="font-medium">Duration:</span> 16 Weeks
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <h4 class="font-medium mb-2">Topics covered:</h4>
-                            <ul class="list-disc pl-5 space-y-1 text-gray-700">
-                                <li>Advanced Development & Data Engineering</li>
-                                <li>Advanced Visualization & Statistics</li>
-                                <li>Advanced Analysis & Product Analytics</li>
-                                <li>Projects & Technical Documentation</li>
-                            </ul>
-                        </div>
-                        <div class="benefit-card">
-                            <h4 class="font-medium text-blue-600 mb-2">Course Benefits:</h4>
-                            <p class="text-gray-700">Advance your data analytics career with advanced techniques. Master statistical analysis and visualization. Learn product analytics and technical documentation. Prepare for senior data analyst roles.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Data Analytics Expert -->
-            <div class="slide">
-                <div class="p-12">
-                    <h2 class="text-3xl font-bold text-blue-600 mb-6">Data Analytics Expert</h2>
-                    <div class="course-card">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">DA301 - DA Expert</h3>
-                        <div class="grid grid-cols-2 gap-4 mb-4">
-                            <div>
-                                <span class="font-medium">Level:</span> Advanced
-                            </div>
-                            <div>
-                                <span class="font-medium">Duration:</span> 20 Weeks
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <h4 class="font-medium mb-2">Topics covered:</h4>
-                            <ul class="list-disc pl-5 space-y-1 text-gray-700">
-                                <li>Cloud Infrastructure & Data Engineering</li>
-                                <li>Enterprise Analytics & Big Data</li>
-                                <li>Advanced Systems & Performance</li>
-                                <li>Enterprise Portfolio & Integration</li>
-                            </ul>
-                        </div>
-                        <div class="benefit-card">
-                            <h4 class="font-medium text-blue-600 mb-2">Course Benefits:</h4>
-                            <p class="text-gray-700">Become an expert in enterprise-level data analytics. Master cloud infrastructure and big data systems. Learn advanced performance optimization techniques. Prepare for leadership roles in data analytics.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Special Offer & Contact -->
-            <div class="slide">
-                <div class="gradient-bg rounded-xl p-12 text-white h-full">
-                    <h2 class="text-3xl font-bold mb-8">Special Offer</h2>
-                    <div class="bg-white/10 backdrop-blur-md rounded-lg p-8 mb-8">
-                        <div class="flex items-center mb-6">
-                            <i data-lucide="gift" class="w-8 h-8 text-yellow-300 mr-4"></i>
-                            <h3 class="text-2xl font-semibold">Limited Time Offer!</h3>
-                        </div>
-                        <p class="text-xl mb-4">Get 25% OFF on SQL and Python courses when you enroll by the end of this month!</p>
-                        <div class="flex items-center space-x-2 text-yellow-300">
-                            <i data-lucide="clock" class="w-5 h-5"></i>
-                            <p>Offer ends soon</p>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="bg-white/10 backdrop-blur-md rounded-lg p-6">
-                            <div class="flex items-center mb-4">
-                                <i data-lucide="mail" class="w-6 h-6 mr-3"></i>
-                                <h4 class="text-xl font-semibold">Get In Touch</h4>
-                            </div>
-                            <p class="mb-2">Email: eda@edathena.com</p>
-                            <p>Phone/WhatsApp: +91-9840347570</p>
-                        </div>
-                        <div class="bg-white/10 backdrop-blur-md rounded-lg p-6">
-                            <div class="flex items-center mb-4">
-                                <i data-lucide="globe" class="w-6 h-6 mr-3"></i>
-                                <h4 class="text-xl font-semibold">Visit Us</h4>
-                            </div>
-                            <p class="mb-2">www.edathena.com</p>
-                            <div class="flex space-x-4 mt-4">
-                                <i data-lucide="linkedin" class="w-6 h-6 cursor-pointer hover:text-blue-300 transition-colors"></i>
-                                <i data-lucide="twitter" class="w-6 h-6 cursor-pointer hover:text-blue-300 transition-colors"></i>
-                                <i data-lucide="instagram" class="w-6 h-6 cursor-pointer hover:text-blue-300 transition-colors"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<body class="bg-gray-900 text-white min-h-screen">
+    <div class="container mx-auto px-4 py-12 max-w-6xl">
+        <!-- Header Section -->
+        <div class="text-center mb-16">
+            <h1 class="text-5xl font-bold mb-6">EdAthena Master Class</h1>
+            <p class="text-xl text-gray-300 mb-8">Accelerate Your Career in AI, ML & Data Science</p>
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <span class="program-badge px-4 py-2 rounded-full text-white">100% Hands-on Coding</span>
+                <span class="program-badge px-4 py-2 rounded-full text-white">Live Sessions</span>
+                <span class="program-badge px-4 py-2 rounded-full text-white">Industry Expert Mentors</span>
             </div>
         </div>
 
-        <!-- Navigation Controls -->
-        <div class="fixed right-8 top-1/2 transform -translate-y-1/2 z-50">
-            <div class="nav-dots flex flex-col"></div>
+        <!-- Programs Grid -->
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+            <!-- Framework Fastrack -->
+            <div class="card bg-gray-800 rounded-xl p-6 border border-gray-700">
+                <div class="mb-4">
+                    <h3 class="text-2xl font-bold mb-4">Framework Fastrack</h3>
+                    <div class="flex gap-2 mb-4">
+                        <span class="price-tag px-3 py-1 rounded-full text-white text-sm font-bold">₹15K</span>
+                        <span class="duration-tag px-3 py-1 rounded-full text-white text-sm font-bold">4 Weeks</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">Master the essential frameworks and tools used in modern AI/ML development</p>
+                </div>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Hands-on Projects
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Industry Tools
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Real-world Applications
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Top 10 Program -->
+            <div class="card bg-gray-800 rounded-xl p-6 border border-gray-700">
+                <div class="mb-4">
+                    <h3 class="text-2xl font-bold mb-2">Top 10% Program</h3>
+                    <div class="text-sm text-blue-400 mb-2">India's Elite AI/ML Track</div>
+                    <div class="flex gap-2 mb-4">
+                        <span class="price-tag px-3 py-1 rounded-full text-white text-sm font-bold">₹25K with Fastrack</span>
+                        <span class="duration-tag px-3 py-1 rounded-full text-white text-sm font-bold">6 Weeks</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">Become top 10% of India's AI/ML professionals with advanced expertise</p>
+                </div>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Advanced AI/ML Projects
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Deep Learning Specialization
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Industry Expert Mentoring
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Top 1 Program -->
+            <div class="card bg-gray-800 rounded-xl p-6 border border-gray-700">
+                <div class="mb-4">
+                    <h3 class="text-2xl font-bold mb-2">Top 1% Program</h3>
+                    <div class="text-sm text-blue-400 mb-2">MAANG Ready Track</div>
+                    <div class="flex gap-2 mb-4">
+                        <span class="price-tag px-3 py-1 rounded-full text-white text-sm font-bold">₹35K Complete Package</span>
+                        <span class="duration-tag px-3 py-1 rounded-full text-white text-sm font-bold">8 Weeks</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">Become top 1% of India's AI/ML professionals and prepare for MAANG companies</p>
+                </div>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        MAANG Interview Prep
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        1-on-1 Expert Mentoring
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Advanced System Design
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <div class="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-4 z-50">
-            <button id="prevBtn" class="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors flex items-center">
-                <i data-lucide="chevron-left" class="w-5 h-5 mr-2"></i>
-                Previous
+        <!-- CTA Section -->
+        <div class="text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to Transform Your AI/ML Career?</h2>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg transition-colors duration-300">
+                Join EdAthena Today
             </button>
-            <button id="nextBtn" class="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors flex items-center">
-                Next
-                <i data-lucide="chevron-right" class="w-5 h-5 ml-2"></i>
-            </button>
+            <p class="mt-4 text-gray-400">Limited seats available. Apply now to secure your spot.</p>
         </div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js" defer></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize Lucide icons
-            if (window.lucide) {
-                window.lucide.createIcons();
-            }
-            
-            // Slide functionality
-            const slideElements = document.querySelectorAll('.slide');
-            const totalSlides = slideElements.length;
-            let currentSlide = 0;
-
-            // Create navigation dots
-            const navDots = document.querySelector('.nav-dots');
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('div');
-                dot.classList.add('nav-dot');
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSlide(i));
-                navDots.appendChild(dot);
-            }
-
-            function updateSlide(direction) {
-                slideElements[currentSlide].classList.remove('active');
-                document.querySelectorAll('.nav-dot')[currentSlide].classList.remove('active');
-                
-                if (direction === 'next') {
-                    currentSlide = (currentSlide + 1) % totalSlides;
-                } else {
-                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                }
-                
-                slideElements[currentSlide].classList.add('active');
-                document.querySelectorAll('.nav-dot')[currentSlide].classList.add('active');
-            }
-
-            function goToSlide(index) {
-                slideElements[currentSlide].classList.remove('active');
-                document.querySelectorAll('.nav-dot')[currentSlide].classList.remove('active');
-                currentSlide = index;
-                slideElements[currentSlide].classList.add('active');
-                document.querySelectorAll('.nav-dot')[currentSlide].classList.add('active');
-            }
-
-            // Add event listeners
-            document.getElementById('nextBtn').addEventListener('click', () => updateSlide('next'));
-            document.getElementById('prevBtn').addEventListener('click', () => updateSlide('prev'));
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight') updateSlide('next');
-                if (e.key === 'ArrowLeft') updateSlide('prev');
-            });
-        });
-    </script>
 </body>
 </html>
