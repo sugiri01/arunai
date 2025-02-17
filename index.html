@@ -10,10 +10,14 @@
             background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
         }
         .card {
-            transition: transform 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            background: linear-gradient(145deg, #1e2837, #2d3748);
+            border: 1px solid rgba(99, 102, 241, 0.1);
         }
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
+            border-color: rgba(99, 102, 241, 0.3);
         }
         .program-badge {
             background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);
@@ -23,137 +27,182 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .price-tag {
-            background: linear-gradient(90deg, #10B981 0%, #059669 100%);
-        }
         .duration-tag {
             background: linear-gradient(90deg, #6366F1 0%, #4F46E5 100%);
         }
+        .glow {
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px -10px #4F46E5;
+            }
+            to {
+                box-shadow: 0 0 20px -5px #4F46E5;
+            }
+        }
+        .shine-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        .shine-effect::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.1) 50%,
+                rgba(255,255,255,0) 100%
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
     </style>
 </head>
-<body class="bg-gray-900 text-white min-h-screen">
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white min-h-screen">
     <div class="container mx-auto px-4 py-12 max-w-6xl">
         <!-- Header Section -->
         <div class="text-center mb-16">
-            <h1 class="text-5xl font-bold mb-6">EdAthena Master Class</h1>
-            <p class="text-xl text-gray-300 mb-8">Accelerate Your Career in AI, ML & Data Science</p>
+            <h1 class="text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+                EdAthena Master Class
+            </h1>
+            <p class="text-2xl text-gray-300 mb-8">Transform Your Career in AI, ML & Data Science</p>
             <div class="flex flex-wrap justify-center gap-4 mb-8">
-                <span class="program-badge px-4 py-2 rounded-full text-white">100% Hands-on Coding</span>
-                <span class="program-badge px-4 py-2 rounded-full text-white">Live Sessions</span>
-                <span class="program-badge px-4 py-2 rounded-full text-white">Industry Expert Mentors</span>
+                <span class="program-badge px-6 py-3 rounded-full text-white font-bold shine-effect">
+                    100% Hands-on Coding
+                </span>
+                <span class="program-badge px-6 py-3 rounded-full text-white font-bold shine-effect">
+                    Live Sessions
+                </span>
+                <span class="program-badge px-6 py-3 rounded-full text-white font-bold shine-effect">
+                    Industry Expert Mentors
+                </span>
             </div>
         </div>
 
         <!-- Programs Grid -->
         <div class="grid md:grid-cols-3 gap-8 mb-16">
             <!-- Framework Fastrack -->
-            <div class="card bg-gray-800 rounded-xl p-6 border border-gray-700">
-                <div class="mb-4">
-                    <h3 class="text-2xl font-bold mb-4">Framework Fastrack</h3>
-                    <div class="flex gap-2 mb-4">
-                        <span class="price-tag px-3 py-1 rounded-full text-white text-sm font-bold">₹15K</span>
-                        <span class="duration-tag px-3 py-1 rounded-full text-white text-sm font-bold">4 Weeks</span>
+            <div class="card rounded-xl p-8">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+                        Framework Fastrack
+                    </h3>
+                    <div class="mb-4">
+                        <span class="duration-tag px-4 py-2 rounded-full text-white text-sm font-bold">4 Weeks</span>
                     </div>
-                    <p class="text-gray-300 mb-4">Master the essential frameworks and tools used in modern AI/ML development</p>
+                    <p class="text-gray-300 mb-6 text-lg">Launch your AI/ML career with hands-on expertise in modern frameworks</p>
                 </div>
-                <ul class="space-y-3 text-gray-300">
+                <ul class="space-y-4 text-gray-300">
                     <li class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
-                        Hands-on Projects
+                        <span class="text-lg">Intensive Hands-on Projects</span>
                     </li>
                     <li class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
-                        Industry Tools
+                        <span class="text-lg">Industry-standard Tools</span>
                     </li>
                     <li class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
-                        Real-world Applications
+                        <span class="text-lg">Real-world Applications</span>
                     </li>
                 </ul>
             </div>
 
             <!-- Top 10 Program -->
-            <div class="card bg-gray-800 rounded-xl p-6 border border-gray-700">
-                <div class="mb-4">
-                    <h3 class="text-2xl font-bold mb-2">Top 10% Program</h3>
-                    <div class="text-sm text-blue-400 mb-2">India's Elite AI/ML Track</div>
-                    <div class="flex gap-2 mb-4">
-                        <span class="price-tag px-3 py-1 rounded-full text-white text-sm font-bold">₹25K with Fastrack</span>
-                        <span class="duration-tag px-3 py-1 rounded-full text-white text-sm font-bold">6 Weeks</span>
+            <div class="card rounded-xl p-8">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">
+                        Top 10% Program
+                    </h3>
+                    <div class="text-blue-400 mb-2 font-bold">India's Elite AI/ML Track</div>
+                    <div class="mb-4">
+                        <span class="duration-tag px-4 py-2 rounded-full text-white text-sm font-bold">6 Weeks</span>
                     </div>
-                    <p class="text-gray-300 mb-4">Become top 10% of India's AI/ML professionals with advanced expertise</p>
+                    <p class="text-gray-300 mb-6 text-lg">Become top 10% of India's AI/ML professionals with advanced expertise</p>
                 </div>
-                <ul class="space-y-3 text-gray-300">
+                <ul class="space-y-4 text-gray-300">
                     <li class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 mr-3 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
-                        Advanced AI/ML Projects
+                        <span class="text-lg">Advanced AI/ML Projects</span>
                     </li>
                     <li class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 mr-3 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
-                        Deep Learning Specialization
+                        <span class="text-lg">Deep Learning Mastery</span>
                     </li>
                     <li class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 mr-3 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
-                        Industry Expert Mentoring
+                        <span class="text-lg">Expert Career Guidance</span>
                     </li>
                 </ul>
             </div>
 
             <!-- Top 1 Program -->
-            <div class="card bg-gray-800 rounded-xl p-6 border border-gray-700">
-                <div class="mb-4">
-                    <h3 class="text-2xl font-bold mb-2">Top 1% Program</h3>
-                    <div class="text-sm text-blue-400 mb-2">MAANG Ready Track</div>
-                    <div class="flex gap-2 mb-4">
-                        <span class="price-tag px-3 py-1 rounded-full text-white text-sm font-bold">₹35K Complete Package</span>
-                        <span class="duration-tag px-3 py-1 rounded-full text-white text-sm font-bold">8 Weeks</span>
+            <div class="card rounded-xl p-8 glow">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-indigo-600">
+                        Top 1% Program
+                    </h3>
+                    <div class="text-blue-400 mb-2 font-bold">MAANG Ready Track</div>
+                    <div class="mb-4">
+                        <span class="duration-tag px-4 py-2 rounded-full text-white text-sm font-bold">8 Weeks</span>
                     </div>
-                    <p class="text-gray-300 mb-4">Become top 1% of India's AI/ML professionals and prepare for MAANG companies</p>
+                    <p class="text-gray-300 mb-6 text-lg">Become top 1% of India's AI/ML professionals and prepare for MAANG companies</p>
                 </div>
-                <ul class="space-y-3 text-gray-300">
+                <ul class="space-y-4 text-gray-300">
                     <li class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 mr-3 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
-                        MAANG Interview Prep
+                        <span class="text-lg">MAANG Interview Mastery</span>
                     </li>
                     <li class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 mr-3 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
-                        1-on-1 Expert Mentoring
+                        <span class="text-lg">1-on-1 Elite Mentoring</span>
                     </li>
                     <li class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 mr-3 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
-                        Advanced System Design
+                        <span class="text-lg">Advanced System Design</span>
                     </li>
                 </ul>
             </div>
         </div>
 
-       <!-- CTA Section -->
+        <!-- CTA Section -->
         <div class="text-center">
-            <h2 class="text-3xl font-bold mb-6">Ready to Transform Your AI/ML Career?</h2>
+            <h2 class="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                Ready to Transform Your AI/ML Career?
+            </h2>
             <a href="https://www.edathena.com" target="_blank" class="inline-block">
-                <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg transition-colors duration-300">
+                <button class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-12 rounded-lg transition-all duration-300 transform hover:scale-105 shine-effect">
                     Join EdAthena Today
                 </button>
             </a>
-            <p class="mt-4 text-gray-400">Limited seats available. Visit www.edathena.com to secure your spot.</p>
+            <p class="mt-4 text-gray-400 text-lg">Limited seats available. Visit www.edathena.com to secure your spot.</p>
         </div>
     </div>
 </body>
