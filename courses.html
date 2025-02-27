@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdAthena - Course Pricing</title>
+    <style>
+        :root {
+            --primary: #1e779c;
+            --secondary: #34a8a5;
+            --dark-blue: #223769;
+            --light-bg: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --border-color: #e0e0e0;
+            --accent-green: #27ae60;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            padding: 2rem;
+        }
+        
+        .document-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .document-header {
+            background: white;
+            padding: 3rem;
+            color: var(--dark-blue);
+            text-align: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .branding {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 1rem;
+            background-color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .category-tab {
+            padding: 0.8rem 1.5rem;
+            margin: 0.5rem;
+            border: none;
+            background-color: transparent;
+            color: var(--text-dark);
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+        
+        .category-tab.active {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(30, 119, 156, 0.2);
+        }
+        
+        .category-tab:hover:not(.active) {
+            background-color: #f0f0f0;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+        
+        .pricing-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: white;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            padding: 1.5rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .course-code {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-level {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.2);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        .foundation {
+            background-color: #4CAF50;
+        }
+        
+        .advanced {
+            background-color: #2196F3;
+        }
+        
+        .expert {
+            background-color: #9C27B0;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .detail-value {
+            color: var(--text-light);
+        }
+        
+        .price-tag {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            position: relative;
+        }
+        
+        .price-tag::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+        
+        .price-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .action-button {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            text-align: center;
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            border-radius: 0 0 12px 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .action-button:hover {
+            background-color: #219653;
+        }
+        
+        .document-footer {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-text {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--text-light);
+        }
+        
+        .highlight-box {
+            background-color: rgba(30, 119, 156, 0.05);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight-box h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .discount-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+        
+        .discount-item {
+            flex-basis: 48%;
+            background-color: white;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .discount-label {
+            font-weight: 600;
+            color: var(--dark-blue);
+        }
+        
+        .discount-value {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .discount-item {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="document-container">
+        <div class="document-header">
+            <div class="logo-container" style="margin-bottom: 2rem;">
+                <img src="g3.png" alt="EdAthena Logo" />
+            </div>
+            <h1 class="branding" style="font-size: 3rem; color: var(--primary);">Course Pricing</h1>
+            <p class="tagline" style="font-size: 1.4rem; margin-top: 1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: var(--text-dark);">Transparent pricing for quality education in AI, Machine Learning, Data Analytics, SQL, and Python.</p>
+        </div>
+        
+        <div class="category-tabs">
+            <button class="category-tab active" data-filter="all">All Courses</button>
+            <button class="category-tab" data-filter="ai">AI</button>
+            <button class="category-tab" data-filter="ml">Machine Learning</button>
+            <button class="category-tab" data-filter="da">Data Analytics</button>
+            <button class="category-tab" data-filter="sql">SQL</button>
+            <button class="category-tab" data-filter="python">Python</button>
+        </div>
+        
+        <div class="pricing-grid">
+            <!-- AI Foundation -->
+            <div class="pricing-card" data-category="ai">
+                <div class="card-header">
+                    <p class="course-code">Course Code: AI101</p>
+                    <h3 class="course-title">AI Foundation</h3>
+                    <span class="course-level foundation">Foundation</span>
+                </div>
+                <div class="card-body">
+                    <div class="detail-row">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value">6 Weeks</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Format</div>
+                        <div class="detail-value">Online & In-person</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Resources</div>
+                        <div class="detail-value">All Included</div>
+                    </div>
+                </div>
+                <div class="price-tag">
+                    <div class="price-value">₹25,000</div>
+                    <div class="price-period">Full Course</div>
+                </div>
+                <button class="action-button">Get Course Details</button>
+            </div>
+            
+            <!-- AI Advanced -->
+            <div class="pricing-card" data-category="ai">
+                <div class="card-header">
+                    <p class="course-code">Course Code: AI201</p>
+                    <h3 class="course-title">AI Advanced</h3>
+                    <span class="course-level advanced">Advanced</span>
+                </div>
+                <div class="card-body">
+                    <div class="detail-row">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value">16 Weeks</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Format</div>
+                        <div class="detail-value">Online & In-person</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Resources</div>
+                        <div class="detail-value">All Included</div>
+                    </div>
+                </div>
+                <div class="price-tag">
+                    <div class="price-value">₹50,000</div>
+                    <div class="price-period">Full Course</div>
+                </div>
+                <button class="action-button">Get Course Details</button>
+            </div>
+            
+            <!-- AI Expert -->
+            <div class="pricing-card" data-category="ai">
+                <div class="card-header">
+                    <p class="course-code">Course Code: AI301</p>
+                    <h3 class="course-title">AI Expert</h3>
+                    <span class="course-level expert">Expert</span>
+                </div>
+                <div class="card-body">
+                    <div class="detail-row">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value">24 Weeks</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Format</div>
+                        <div class="detail-value">Online & In-person</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Resources</div>
+                        <div class="detail-value">All Included</div>
+                    </div>
+                </div>
+                <div class="price-tag">
+                    <div class="price-value">₹75,000</div>
+                    <div class="price-period">Full Course</div>
+                </div>
+                <button class="action-button">Get Course Details</button>
+            </div>
+            
+            <!-- Machine Learning Foundation -->
+            <div class="pricing-card" data-category="ml">
+                <div class="card-header">
+                    <p class="course-code">Course Code: ML101</p>
+                    <h3 class="course-title">Machine Learning Foundation</h3>
+                    <span class="course-level foundation">Foundation</span>
+                </div>
+                <div class="card-body">
+                    <div class="detail-row">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value">12 Weeks</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Format</div>
+                        <div class="detail-value">Online & In-person</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Resources</div>
+                        <div class="detail-value">All Included</div>
+                    </div>
+                </div>
+                <div class="price-tag">
+                    <div class="price-value">₹40,000</div>
+                    <div class="price-period">Full Course</div>
+                </div>
+                <button class="action-button">Get Course Details</button>
+            </div>
+            
+            <!-- Machine Learning Advanced -->
+            <div class="pricing-card" data-category="ml">
+                <div class="card-header">
+                    <p class="course-code">Course Code: ML201</p>
+                    <h3 class="course-title">Machine Learning Advanced</h3>
+                    <span class="course-level advanced">Advanced</span>
+                </div>
+                <div class="card-body">
+                    <div class="detail-row">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value">16 Weeks</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Format</div>
+                        <div class="detail-value">Online & In-person</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Resources</div>
+                        <div class="detail-value">All Included</div>
+                    </div>
+                </div>
+                <div class="price-tag">
+                    <div class="price-value">₹70,000</div>
+                    <div class="price-period">Full Course</div>
+                </div>
+                <button class="action-button">Get Course Details</button>
+            </div>
+            
+            <!-- Machine Learning Expert -->
+            <div class="pricing-card" data-category="ml">
+                <div class="card-header">
+                    <p class="course-code">Course Code: ML301</p>
+                    <h3 class="course-title">Machine Learning Expert</h3>
+                    <span class="course-level expert">Expert</span>
+                </div>
+                <div class="card-body">
+                    <div class="detail-row">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value">24 Weeks</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Format</div>
+                        <div class="detail-value">Online & In-person</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Resources</div>
+                        <div class="detail-value">All Included</div>
+                    </div>
+                </div>
+                <div class="price-tag">
+                    <div class="price-value">₹85,000</div>
+                    <div class="price-period">Full Course</div>
+                </div>
+                <button class="action-button">Get Course Details</button>
+            </div>
+            
+            <!-- Data Analytics Foundation -->
+            <div class="pricing-card" data-category="da">
+                <div class="card-header">
+                    <p class="course-code">Course Code: DA101</p>
+                    <h3 class="course-title">Data Analytics Foundation</h3>
+                    <span class="course-level foundation">Foundation</span>
+                </div>
+                <div class="card-body">
+                    <div class="detail-row">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value">12 Weeks</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Format</div>
+                        <div class="detail-value">Online & In-person</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Resources</div>
+                        <div class="detail-value">All Included</div>
+                    </div>
+                </div>
+                <div class="price-tag">
+                    <div class="price-value">₹35,000</div>
+                    <div class="price-period">Full Course</div>
+                </div>
+                <button class="action-button">Get Course Details</button>
+            </div>
+            
+            <!-- Data Analytics Advanced -->
+            <div class="pricing-card" data-category="da">
+                <div class="card-header">
+                    <p class="course-code">Course Code: DA201</p>
+                    <h3 class="course-title">Data Analytics Advanced</h3>
+                    <span class="course-level advanced">Advanced</span>
+                </div>
+                <div class="card-body">
+                    <div class="detail-row">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value">16 Weeks</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Format</div>
+                        <div class="detail-value">Online & In-person</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Resources</div>
+                        <div class="detail-value">All Included</div>
+                    </div>
+                </div>
+                <div class="price-tag">
+                    <div class="price-value">₹55,000</div>
+                    <div class="price-period">Full Course</div>
+                </div>
+                <button class="action-button">Get Course Details</button>
+            </div>
+            
+            <!-- Data Analytics Expert -->
+            <div class="pricing-card" data-category="da">
+                <div class="card-header">
+                    <p class="course-code">Course Code: DA301</p>
+                    <h3 class="course-title">Data Analytics Expert</h3>
+                    <span class="course-level expert">Expert</span>
+                </div>
+                <div class="card-body">
+                    <div class="detail-row">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value">24 Weeks</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Format</div>
+                        <div class="detail-value">Online & In-person</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Resources</div>
+                        <div class="detail-value">All Included</div>
+                    </div>
+                </div>
+                <div class="price-tag">
+                    <div class="price-value">₹75,000</div>
+                    <div class="price-period">Full Course</div>
+                </div>
+                <button class="action-button">Get Course Details</button>
+            </div>
+            
+            <!-- SQL Foundation -->
+            <div class="pricing-card" data-category="sql">
+                <div class="card-header">
+                    <p class="course-code">Course Code: SQL101</p>
+                    <h3 class="course-title">SQL Foundation</h3>
+                    <span class="course-level foundation">Foundation</span>
+                </div>
+                <div class="card-body">
+                    <div class="detail-row">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value">4 Weeks</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Format</div>
+                        <div class="detail-value">Online & In-person</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Resources</div>
+                        <div class="detail-value">All Included</div>
+                    </div>
+                </div>
+                <div class="price-tag">
+                    <div class="price-value">₹15,000</div>
+                    <div class="price-period">Full Course</div>
+                </div>
+                <button class="action-button">Get Course Details</button>
+            </div>
+            
+            <!-- SQL Advanced -->
+            <div class="pricing-card" data-category="sql">
+                <div class="card-header">
+                    <p class="course-code">Course Code: SQL201</p>
+                    <h3 class="course-title">SQL Advanced</h3>
+                    <span class="course-level advanced">Advanced</span>
+                </div>
+                <div class="card-body">
+                    <div class="detail-row">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value">6 Weeks</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Format</div>
+                        <div class="detail-value">Online & In-person</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Resources</div>
+                        <div class="detail-value">All Included</div>
+                    </div>
+                </div>
+                <div class="price-tag">
+                    <div class="price-value">₹25,000</div>
+                    <div class="price-period">Full Course</div>
+                </div>
+                <button class="action-button">Get Course Details</button>
+            </div>
+            
+            <!-- SQL Expert -->
+            <div class="pricing-card" data-category="sql">
+                <div class="card-header">
+                    <p class="course-code">Course Code: SQL301</p>
+                    <h3 class="course-title">SQL Expert</h3>
+                    <span class="course-level expert">Expert</span>
+                </div>
+                <div class="card-body">
+                    <div class="detail-row">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value">8 Weeks</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Format</div>
+                        <div class="detail-value">Online & In-person</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Resources</div>
+                        <div class="detail-value">All Included</div>
+                    </div>
+                </div>
+                <div class="price-tag">
+                    <div class="price-value">₹35,000</div>
+                    <div class="price-period">Full Course</div>
+                </div>
+                <button class="action-button">Get Course Details</button>
+            </div>
+            
+            <!-- Python Foundation -->
+            <div class="pricing-card" data-category="python">
+                <div class="card-header">
+                    <p class="course-code">Course Code: PY101</p>
+                    <h3 class="course-title">Python Foundation</h3>
+                    <span class="course-level foundation">Foundation</span>
+                </div>
+                <div class="card-body">
+                    <div class="detail-row">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value">4 Weeks</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Format</div>
+                        <div class="detail-value">Online & In-person</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Resources</div>
+                        <div class="detail-value">All Included</div>
+                    </div>
+                </div>
+                <div class="price-tag">
+                    <div class="price-value">₹15,000</div>
+                    <div class="price-period">Full Course</div>
+                </div>
+                <button class="action-button">Get Course Details</button>
+            </div>
+            
+            <!-- Python Advanced -->
+            <div class="pricing-card" data-category="python">
+                <div class="card-header">
+                    <p class="course-code">Course Code: PY201</p>
+                    <h3 class="course-title">Python Advanced</h3>
+                    <span class="course-level advanced">Advanced</span>
+                </div>
+                <div class="card-body">
+                    <div class="detail-row">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value">8 Weeks</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Format</div>
+                        <div class="detail-value">Online & In-person</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Resources</div>
+                        <div class="detail-value">All Included</div>
+                    </div>
+                </div>
+                <div class="price-tag">
+                    <div class="price-value">₹25,000</div>
+                    <div class="price-period">Full Course</div>
+                </div>
+                <button class="action-button">Get Course Details</button>
+            </div>
+            
+            <!-- Python Expert -->
+            <div class="pricing-card" data-category="python">
+                <div class="card-header">
+                    <p class="course-code">Course Code: PY301</p>
+                    <h3 class="course-title">Python Expert</h3>
+                    <span class="course-level expert">Expert</span>
+                </div>
+                <div class="card-body">
+                    <div class="detail-row">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value">12 Weeks</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Format</div>
+                        <div class="detail-value">Online & In-person</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Resources</div>
+                        <div class="detail-value">All Included</div>
+                    </div>
+                </div>
+                <div class="price-tag">
+                    <div class="price-value">₹35,000</div>
+                    <div class="price-period">Full Course</div>
+                </div>
+                <button class="action-button">Get Course Details</button>
+            </div>
+        </div>
+        
+        <div class="highlight-box">
+            <h3>Special Discounts Available</h3>
+            <p>We're committed to making quality education accessible to everyone. Take advantage of these special offers:</p>
+            <div class="discount-list">
+                <div class="discount-item">
+                    <span class="discount-label">Early Bird Registration:</span>
+                    <span class="discount-value">10% Off</span>
+                </div>
+                <div class="discount-item">
+                    <span class="discount-label">Group Enrollment (3+ participants):</span>
+                    <span class="discount-value">15% Off</span>
+                </div>
+                <div class="discount-item">
+                    <span class="discount-label">Students (with valid ID):</span>
+                    <span class="discount-value">10% Off</span>
+                </div>
+                <div class="discount-item">
+                    <span class="discount-label">Bundle Courses:</span>
+                    <span class="discount-value">Up to 20% Off</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="document-footer">
+            <p class="footer-text">Pricing effective as of February 2025. All prices are in Indian Rupees (₹). Contact us for flexible payment plans and scholarship opportunities.</p>
+            <p class="footer-text" style="margin-top: 1rem;">EdAthena Academy | <strong>Email:</strong> info@edathena.com | <strong>Phone:</strong> +91 98403-47570</p>
+        </div>
+    </div>
+    
+    <!-- JavaScript for Filter Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter buttons functionality
+            const filterBtns = document.querySelectorAll('.category-tab');
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get filter value
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Filter cards with animation
+                    pricingCards.forEach(card => {
+                        if (filterValue === 'all') {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else {
+                            if (card.getAttribute('data-category') === filterValue) {
+                                card.style.display = 'block';
+                                setTimeout(() => {
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'translateY(0)';
+                                }, 50);
+                            } else {
+                                card.style.opacity = '0';
+                                card.style.transform = 'translateY(20px)';
+                                setTimeout(() => {
+                                    card.style.display = 'none';
+                                }, 300);
+                            }
+                        }
+                    });
+                });
+            });
+            
+            // Add hover effects for cards
+            pricingCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.querySelector('.action-button').style.backgroundColor = '#219653';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.querySelector('.action-button').style.backgroundColor = '';
+                });
+            });
+        });
+    </script>
