@@ -3,835 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EdAthena: AI Education Partnership</title>
+    <title>EdAthena - One-Page Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     <style>
-        :root {
-            --primary: #1e779c;
-            --primary-dark: #223769;
-            --primary-light: #34a8a5;
-            --accent: #34a8a5;
-            --text-dark: #223769;
-            --text-medium: #555555;
-            --text-light: #7d7d7d;
-            --background: #f8fafc;
-            --white: #ffffff;
-            --section-bg: #edf7f7;
-            --border-radius: 8px;
-            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --card-hover: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-            background-color: var(--background);
-            padding: 0;
-            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fa;
         }
         
-        .container {
-            max-width: 1100px;
+        .page {
+            width: 8.5in;
+            min-height: 11in;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        header {
-            background-color: var(--white);
-            color: var(--primary);
-            padding: 2.5rem 0;
-            text-align: center;
-            border-bottom: 3px solid var(--primary-light);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .header-logo {
-            max-width: 540px;
-            height: auto;
-            max-height: 150px;
-        }
-        
-        .tagline {
-            font-size: 1.3rem;
-            max-width: 700px;
-            margin: 0 auto;
-            color: var(--text-medium);
-        }
-        
-        main {
-            padding: 3rem 0;
-        }
-        
-        section {
-            margin-bottom: 3rem;
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            padding: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        section:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--card-hover);
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            color: var(--primary);
-        }
-        
-        h1 {
-            font-size: 2.2rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-        
-        h1::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background-color: var(--accent);
-            margin: 10px auto 0;
-        }
-        
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid var(--primary-light);
-            padding-bottom: 0.5rem;
-        }
-        
-        h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: var(--primary-dark);
-        }
-        
-        p {
-            margin-bottom: 1rem;
-        }
-        
-        hr {
-            margin: 2rem 0;
-            border: 0;
-            height: 1px;
-            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
-        }
-        
-        .grid {
-            display: grid;
-            gap: 2rem;
-        }
-        
-        .grid-2 {
-            grid-template-columns: repeat(auto-fit, minmax(min(450px, 100%), 1fr));
-        }
-        
-        .grid-3 {
-            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-        }
-        
-        .bullet-list {
-            list-style: none;
-            margin-left: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .bullet-list li {
-            margin-bottom: 0.5rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        
-        .bullet-list li::before {
-            content: "•";
-            color: var(--primary);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-        
-        .bullet-list li strong {
-            color: var(--primary-dark);
-        }
-        
-        .number-list {
-            margin-left: 1.5rem;
-        }
-        
-        .number-list li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .number-list li strong {
-            color: var(--primary-dark);
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-        }
-        
-        thead {
-            background-color: var(--primary);
-            color: var(--white);
-        }
-        
-        th, td {
-            padding: 0.75rem 1rem;
-            text-align: left;
-        }
-        
-        th {
-            font-weight: 600;
-        }
-        
-        tbody tr {
-            border-bottom: 1px solid #eaeaea;
-        }
-        
-        tbody tr:last-child {
-            border-bottom: none;
-        }
-        
-        tbody tr:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-        
-        .card {
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             padding: 1.5rem;
-            height: 100%;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-top: 3px solid var(--primary);
         }
         
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        .gradient-border-left {
+            border-left: 4px solid;
+            border-image: linear-gradient(to bottom, #2563eb, #4f46e5) 1;
         }
         
-        .card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
+        .gradient-bg {
+            background: linear-gradient(135deg, #eff6ff, #eef2ff);
         }
         
-        .card.highlight {
-            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
-            color: var(--white);
+        .icon {
+            display: inline-block;
+            width: 1.25rem;
+            height: 1.25rem;
+            stroke-width: 0;
+            stroke: currentColor;
+            fill: currentColor;
+            vertical-align: middle;
         }
         
-        .card.highlight h3 {
-            color: var(--white);
-        }
-        
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 2rem auto;
-        }
-        
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: var(--primary-light);
-            top: 0;
-            bottom: 0;
-            left: 20px;
-            margin-left: -2px;
-        }
-        
-        .timeline-item {
-            position: relative;
-            padding-left: 40px;
-            margin-bottom: 2rem;
-        }
-        
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-        
-        .timeline-dot {
-            position: absolute;
-            left: 18px;
-            width: 20px;
-            height: 20px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            z-index: 1;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        
-        .timeline-content {
-            padding: 1.5rem;
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .timeline-title {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .contacts {
-            display: flex;
-            flex-direction: column;
-            margin-top: 1rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.8rem;
-        }
-        
-        .contact-icon {
-            margin-right: 1rem;
-            color: var(--primary);
-            min-width: 20px;
-            text-align: center;
-        }
-        
-        .pricing-table {
-            overflow-x: auto;
-            margin: 2rem 0;
-        }
-        
-        .pricing-table table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .pricing-table th {
-            background-color: var(--primary);
-            color: white;
-            text-align: left;
-            padding: 12px 15px;
-        }
-        
-        .pricing-table td {
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-        }
-        
-        .pricing-table tr:nth-child(even) {
-            background-color: #f8f8f8;
-        }
-        
-        .pricing-table tr:hover {
-            background-color: #f1f1f1;
-        }
-        
-        .package-description {
-            color: var(--text-medium);
-            margin-bottom: 1rem;
-        }
-        
-        .explanation-section {
-            background-color: #f8f8f8;
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            border-left: 4px solid var(--primary);
-        }
-        
-        footer {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            padding: 2rem 0;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-        
-        .footer-tagline {
-            font-style: italic;
-            opacity: 0.8;
-            margin-bottom: 1rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* New styles for updated pricing */
-        .category-header {
-            background-color: #e8f0fe !important;
-            font-weight: bold;
-        }
-        
-        .total-row {
-            font-weight: bold;
-            background-color: #e8f0fe !important;
-        }
-        
-        .note {
-            font-size: 14px;
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-        }
-        
-        .highlight {
-            background-color: #fffde7;
-        }
-        
-        @media (max-width: 768px) {
-            .grid-2, .grid-3 {
-                grid-template-columns: 1fr;
+        @media print {
+            body {
+                background: none;
             }
             
-            table {
-                font-size: 0.9rem;
-            }
-            
-            th, td {
-                padding: 0.5rem;
-            }
-            
-            .pricing-table {
-                font-size: 0.85rem;
+            .page {
+                width: 100%;
+                height: 100%;
+                box-shadow: none;
             }
         }
     </style>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div class="logo-container">
-                <img src="g3.png" alt="EdAthena Logo" class="header-logo">
+<body class="p-4">
+    <div class="page">
+        <!-- Header -->
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-xl">
+                    E
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold">EdAthena</h1>
+                    <p class="text-sm text-gray-500">Transforming AI Education for the Future</p>
+                </div>
             </div>
-            <p class="tagline">Revolutionizing AI Education Through Industry Collaboration</p>
+            <div class="px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Est. 2023</div>
         </div>
-    </header>
-    
-</br>
-    <main class="container">
-        <section>
-            <h2>Executive Summary</h2>
-            <p>EdAthena offers a comprehensive partnership opportunity to revolutionize AI education at your institution by bridging the critical gap between academia and industry through innovative curriculum, project-based learning, and premium internship opportunities.</p>
-        </section>
-        
-        <div class="grid grid-2">
-            <section>
-                <h2>About EdAthena</h2>
-                <h3>Vision</h3>
-                <p>To become the global leader in AI education by providing a dynamic learning environment that nurtures innovation, fosters industry collaboration, and empowers individuals with the skills to shape the future of AI-driven industries.</p>
-                
-                <h3>Mission</h3>
-                <ul class="bullet-list">
-                    <li>Deliver high-quality AI education through theoretical knowledge and practical applications</li>
-                    <li>Collaborate with industries to align education with real-world needs</li>
-                    <li>Facilitate career growth by bridging academic learning and employability</li>
-                    <li>Provide access to AI tools, resources, and a community of experts</li>
-                </ul>
-            </section>
-            
-            <section>
-                <h2>Partnership Benefits</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>For Your Institution</th>
-                            <th>For Your Students</th>
-                            <th>For Industry Partners</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Industry-driven curriculum</td>
-                            <td>Industry-relevant skills</td>
-                            <td>Access to talent pipeline</td>
-                        </tr>
-                        <tr>
-                            <td>Real-world project opportunities</td>
-                            <td>Hands-on project experience</td>
-                            <td>Research collaboration</td>
-                        </tr>
-                        <tr>
-                            <td>Research collaboration</td>
-                            <td>Mentorship from AI experts</td>
-                            <td>Workforce development</td>
-                        </tr>
-                        <tr>
-                            <td>Enhanced reputation</td>
-                            <td>Career placement assistance</td>
-                            <td>Innovation acceleration</td>
-                        </tr>
-                        <tr>
-                            <td>Access to industry network</td>
-                            <td>Latest AI tools & technologies</td>
-                            <td>Custom training programs</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+
+        <div class="border-t border-gray-200 my-6"></div>
+
+        <!-- Arunai Proposal Banner -->
+        <div class="mb-6 p-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg text-white text-center shadow-lg">
+            <h2 class="text-xl font-bold">PROPOSAL FOR ARUNAI ENGINEERING COLLEGE</h2>
+            <p class="text-sm mt-1">Exclusive AI Education Partnership Opportunity</p>
+            <a href="prop3.html" class="inline-block mt-3 px-4 py-2 bg-white text-blue-700 rounded-md font-medium text-sm hover:bg-blue-50 transition-colors">View Full Proposal →</a>
         </div>
-        
-        <section>
-            <h2>Our Comprehensive Offering</h2>
-            <div class="grid grid-3">
-                <div class="card">
-                    <h3>Curriculum Integration</h3>
-                    <ul class="bullet-list">
-                        <li>AI/ML: Fundamentals and advanced concepts</li>
-                        <li>Data Analytics: Data processing and visualization</li>
-                        <li>SQL: Database management and queries</li>
-                        <li>Python: Programming fundamentals for AI</li>
-                    </ul>
+
+        <!-- Introduction -->
+        <div class="mb-6">
+            <h2 class="text-xl font-semibold mb-3">About EdAthena</h2>
+            <p class="text-gray-700 leading-relaxed">
+                EdAthena is an innovative AI EdTech academy based in Chennai, India, dedicated to empowering students and professionals 
+                with cutting-edge knowledge in Artificial Intelligence, Machine Learning, Data Science, and related domains. 
+                We bridge the gap between theoretical learning and practical implementation through a structured, 
+                industry-relevant curriculum combining self-paced, instructor-led, and project-based learning approaches.
+            </p>
+        </div>
+
+        <!-- Vision & Mission -->
+        <div class="mb-6 border rounded-lg overflow-hidden gradient-border-left">
+            <div class="p-4">
+                <h3 class="flex items-center gap-2 font-semibold mb-2">
+                    <svg class="icon text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    Vision & Mission
+                </h3>
+                <p class="text-sm text-gray-700 mb-2">
+                    <span class="font-medium">Vision:</span> Create a future-ready workforce by providing world-class AI education 
+                    that is accessible, affordable, and career-focused.
+                </p>
+                <p class="text-sm text-gray-700">
+                    <span class="font-medium">Mission:</span> Enable individuals from diverse backgrounds to develop expertise in AI, 
+                    enhance their employability, and contribute to industry innovation through practical, real-world applications.
+                </p>
+            </div>
+        </div>
+
+        <!-- Course Offerings -->
+        <div class="mb-6">
+            <h2 class="text-xl font-semibold mb-3 flex items-center gap-2">
+                <svg class="icon text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+                Course Offerings
+            </h2>
+            
+            <div class="grid grid-cols-2 gap-3">
+                <div class="flex items-start gap-2">
+                    <svg class="w-5 h-5 mt-0.5 text-blue-600 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9.5 2L11 4L13 3L14.5 5L16.5 4L18 6H21.5L20 9L22 11L20.5 13L22 15L20.5 17L22 19L20.5 21H18L16.5 20L14.5 22L12.5 20L10.5 22L8.5 20L6.5 22L4.5 21L3 19L4.5 17L3 15L4.5 13L3 11L4.5 9L3 7L4.5 5L6.5 4L8 6L9.5 4L11 6L13 5Z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <div>
+                        <p class="font-medium text-sm">AI & Machine Learning</p>
+                        <p class="text-xs text-gray-600">From basics to advanced applications</p>
+                    </div>
                 </div>
                 
-                <div class="card">
-                    <h3>Learning Methodology</h3>
-                    <ul class="bullet-list">
-                        <li>Project-Based Learning with real-world problems</li>
-                        <li>Personalized Learning Paths</li>
-                        <li>Expert Mentorship from industry leaders</li>
-                        <li>Community Engagement</li>
-                        <li>Access to cloud-based AI workspaces</li>
-                    </ul>
+                <div class="flex items-start gap-2">
+                    <svg class="w-5 h-5 mt-0.5 text-blue-600 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    <div>
+                        <p class="font-medium text-sm">Data Science & Analytics</p>
+                        <p class="text-xs text-gray-600">Data processing to predictive analytics</p>
+                    </div>
                 </div>
                 
-                <div class="card">
-                    <h3>Industry Collaboration</h3>
-                    <ul class="bullet-list">
-                        <li>Premium Internships with leading tech companies</li>
-                        <li>Industry-Sponsored Projects</li>
-                        <li>Placement Mentoring and Training</li>
-                        <li>Interview Scheduling with potential employers</li>
-                        <li>Career Development and placement assistance</li>
-                    </ul>
+                <div class="flex items-start gap-2">
+                    <svg class="w-5 h-5 mt-0.5 text-blue-600 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    <div>
+                        <p class="font-medium text-sm">Python & SQL for AI</p>
+                        <p class="text-xs text-gray-600">Programming fundamentals for AI</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-2">
+                    <svg class="w-5 h-5 mt-0.5 text-blue-600 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    <div>
+                        <p class="font-medium text-sm">Full-Stack AI Development</p>
+                        <p class="text-xs text-gray-600">AI with front-end and back-end</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-2">
+                    <svg class="w-5 h-5 mt-0.5 text-blue-600 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <div>
+                        <p class="font-medium text-sm">Prompt Engineering</p>
+                        <p class="text-xs text-gray-600">AI prompt design for LLMs</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-2">
+                    <svg class="w-5 h-5 mt-0.5 text-blue-600 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <div>
+                        <p class="font-medium text-sm">Domain-Specific AI</p>
+                        <p class="text-xs text-gray-600">AI in healthcare, finance, and more</p>
+                    </div>
                 </div>
             </div>
-        </section>
-        
-        <section>
-            <h2>Implementation Timeline</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">1. Course Selection</h3>
-                        <p>Select from our comprehensive course offerings:</p>
-                        <ul class="bullet-list">
-                            <li>AI/ML: Core AI and Machine Learning concepts and applications</li>
-                        </ul>
+        </div>
+
+        <!-- Learning Approach -->
+        <div class="mb-6">
+            <h2 class="text-xl font-semibold mb-3 flex items-center gap-2">
+                <svg class="icon text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+                </svg>
+                Innovative Learning Approach
+            </h2>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div class="border-none shadow-sm bg-slate-50 rounded-lg p-4">
+                    <div class="flex items-start gap-2">
+                        <svg class="w-5 h-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"></path>
+                        </svg>
+                        <div>
+                            <h3 class="font-medium text-sm">Project-Based Learning</h3>
+                            <p class="text-xs text-gray-600">Hands-on experience with real-world AI projects</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">2. Project Work</h3>
-                        <p>Students engage in domain-specific projects based on their chosen course track, applying theoretical knowledge to real-world problems.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">3. Internship Placement</h3>
-                        <p>Students are placed in internships aligned with their domain of study, gaining practical industry experience.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">4. Job Placement Support</h3>
-                        <p>Comprehensive placement assistance including:</p>
-                        <ul class="bullet-list">
-                            <li>Placement mentoring and training</li>
-                            
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">5. Ongoing Support</h3>
-                        <p>Continued career guidance and technical support after placement.</p>
+                <div class="border-none shadow-sm bg-slate-50 rounded-lg p-4">
+                    <div class="flex items-start gap-2">
+                        <svg class="w-5 h-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 00-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 010 7.75"></path>
+                        </svg>
+                        <div>
+                            <h3 class="font-medium text-sm">Mentor-Guided Training</h3>
+                            <p class="text-xs text-gray-600">Industry experts providing guidance</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <!-- REPLACED SECTION: Partnership Investment Options -->
-        <section>
-            <h2>Partnership Investment Options</h2>
-            <div class="pricing-header">
-                <h3>Tech Education Programs - Student Edition</h3>
-                <p>Affordable packages tailored for college students</p>
+        </div>
+
+        <!-- Products & Partnerships -->
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div>
+                <h2 class="text-xl font-semibold mb-3 flex items-center gap-2">
+                    <svg class="icon text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 12L12 2 2 12l10 10 4-4v-7h3l3 3v4l2 2 2-10z"></path>
+                    </svg>
+                    Our Product
+                </h2>
+                <div class="gradient-bg rounded-lg shadow-sm p-4">
+                    <div class="flex items-start gap-2">
+                        <svg class="w-5 h-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="1" y="6" width="18" height="12" rx="2" ry="2"></rect>
+                            <line x1="10" y1="6" x2="10" y2="18"></line>
+                        </svg>
+                        <div>
+                            <h3 class="font-medium text-sm">Axelari.ai</h3>
+                            <p class="text-xs text-gray-600">Platform connecting learners with industry projects and internships</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="pricing-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Package Component</th>
-                            <th>Domain</th>
-                            <th>Key Topics</th>
-                            <th>Duration</th>
-                            <th>Price (INR)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- AI/ML Section with Expanded Domains -->
-                        <tr class="category-header">
-                            <td colspan="5">AI/ML Learning Paths</td>
-                        </tr>
-                        <tr>
-                            <td rowspan="7">Courses</td>
-                            <td>Core AI/ML</td>
-                            <td>Machine Learning, Neural Networks, Deep Learning</td>
-                            <td>10 weeks</td>
-                            <td>₹45,000</td>
-                        </tr>
-                        <tr>
-                            <td>Computer Vision</td>
-                            <td>Image Processing, Object Detection, OpenCV, PyTorch</td>
-                            <td>8 weeks</td>
-                            <td>₹35,000</td>
-                        </tr>
-                        <tr>
-                            <td>Natural Language Processing</td>
-                            <td>Text Analysis, LLMs, Transformers, Language Modeling</td>
-                            <td>8 weeks</td>
-                            <td>₹35,000</td>
-                        </tr>
-                        <tr>
-                            <td>Reinforcement Learning</td>
-                            <td>RL Algorithms, Q-Learning, Policy Gradients, Game AI</td>
-                            <td>6 weeks</td>
-                            <td>₹30,000</td>
-                        </tr>
-                        <tr>
-                            <td>Data Analytics</td>
-                            <td>Statistical Analysis, Data Visualization, Insights Generation</td>
-                            <td>8 weeks</td>
-                            <td>₹30,000</td>
-                        </tr>
-                        <tr>
-                            <td>SQL & Databases</td>
-                            <td>Database Design, SQL Queries, NoSQL, Data Warehousing</td>
-                            <td>6 weeks</td>
-                            <td>₹25,000</td>
-                        </tr>
-                        <tr>
-                            <td>Python Programming</td>
-                            <td>Core Python, Data Structures, Libraries, Best Practices</td>
-                            <td>6 weeks</td>
-                            <td>₹20,000</td>
-                        </tr>
-                        
-                        <!-- Projects Section -->
-                        <tr class="category-header">
-                            <td colspan="5">Industry-Relevant Projects</td>
-                        </tr>
-                        <tr>
-                            <td rowspan="5">Projects</td>
-                            <td>Healthcare AI</td>
-                            <td>Medical Image Analysis, Patient Risk Assessment, Diagnosis Support</td>
-                            <td>4 weeks</td>
-                            <td>₹25,000</td>
-                        </tr>
-                        <tr>
-                            <td>Finance & FinTech</td>
-                            <td>Fraud Detection, Market Prediction, Portfolio Optimization</td>
-                            <td>4 weeks</td>
-                            <td>₹25,000</td>
-                        </tr>
-                        <tr>
-                            <td>Smart City Applications</td>
-                            <td>Traffic Analysis, Urban Planning, Resource Optimization</td>
-                            <td>4 weeks</td>
-                            <td>₹25,000</td>
-                        </tr>
-                        <tr>
-                            <td>Retail & E-commerce</td>
-                            <td>Recommendation Systems, Customer Segmentation, Inventory Management</td>
-                            <td>4 weeks</td>
-                            <td>₹25,000</td>
-                        </tr>
-                        <tr>
-                            <td>Generative AI Applications</td>
-                            <td>Text-to-Image, Chatbots, Content Generation, Synthetic Data</td>
-                            <td>4 weeks</td>
-                            <td>₹30,000</td>
-                        </tr>
-                        
-                        <!-- Internship Section -->
-                        <tr class="category-header">
-                            <td colspan="5">Internship Opportunities</td>
-                        </tr>
-                        <tr>
-                            <td rowspan="4">Internship</td>
-                            <td>Remote Internship - Basic</td>
-                            <td>Work on Real Industry Projects with Mentorship</td>
-                            <td>8 weeks</td>
-                            <td>₹40,000</td>
-                        </tr>
-                        <tr>
-                            <td>Remote Internship - Advanced</td>
-                            <td>Led Team Projects with Industry Partners</td>
-                            <td>12 weeks</td>
-                            <td>₹60,000</td>
-                        </tr>
-                        <tr>
-                            <td>Hybrid Internship</td>
-                            <td>Combo of Remote Work and In-person Sessions</td>
-                            <td>10 weeks</td>
-                            <td>₹50,000</td>
-                        </tr>
-                        <tr>
-                            <td>Research Internship</td>
-                            <td>Work on Cutting-edge Research with Publications Opportunity</td>
-                            <td>16 weeks</td>
-                            <td>₹75,000</td>
-                        </tr>
-                        
-                        <!-- Career Services -->
-                        <tr class="category-header">
-                            <td colspan="5">Career Services</td>
-                        </tr>
-                        <tr>
-                            <td>Career Development</td>
-                            <td>Placement Preparation</td>
-                            <td>Resume Building, Interview Training, Portfolio Development</td>
-                            <td>4 weeks</td>
-                            <td>₹20,000</td>
-                        </tr>
-                        
-                        <!-- Package Deals -->
-                        <tr class="category-header">
-                            <td colspan="5">Student-Friendly Package Deals (30-50% Discount)</td>
-                        </tr>
-                        <tr class="highlight">
-                            <td>Starter Package</td>
-                            <td colspan="2">Python + SQL + 1 Project of Choice</td>
-                            <td>16 weeks</td>
-                            <td>₹55,000</td>
-                        </tr>
-                        <tr class="highlight">
-                            <td>Core ML Package</td>
-                            <td colspan="2">Core AI/ML + Python + Data Analytics + 1 Project</td>
-                            <td>24 weeks</td>
-                            <td>₹95,000</td>
-                        </tr>
-                        <tr class="highlight">
-                            <td>Specialization Package</td>
-                            <td colspan="2">Core AI/ML + 1 Specialization (CV/NLP/RL) + 2 Projects</td>
-                            <td>26 weeks</td>
-                            <td>₹1,10,000</td>
-                        </tr>
-                        <tr class="highlight">
-                            <td>Career Launcher</td>
-                            <td colspan="2">Core ML Package + Basic Internship + Career Development</td>
-                            <td>36 weeks</td>
-                            <td>₹1,45,000</td>
-                        </tr>
-                        <tr class="total-row highlight">
-                            <td>Complete Master Package</td>
-                            <td colspan="2">Core AI/ML + 2 Specializations + Advanced Internship + Career Services</td>
-                            <td>52 weeks</td>
-                            <td>₹2,25,000</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="note">
-                <p><strong>Student Benefits:</strong></p>
-                <ul>
-                    <li>Additional 10% discount with valid student ID</li>
-                    <li>Flexible payment plans available (pay in 3-6 installments)</li>
-                    <li>Scholarship opportunities for outstanding students</li>
-                    <li>Group enrollment discounts (5+ students get 15% off)</li>
-                    <li>Free access to cloud computing credits worth ₹15,000</li>
-                    <li>Certificate of completion for all courses and projects</li>
+            <div>
+                <h2 class="text-xl font-semibold mb-3 flex items-center gap-2">
+                    <svg class="icon text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 00-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 010 7.75"></path>
+                    </svg>
+                    Partners
+                </h2>
+                <ul class="text-sm text-gray-700">
+                    <li class="mb-1">• Swinburne University</li>
+                    <li class="mb-1">• University of Nottingham</li>
+                    <li>• Various Corporate Collaborations</li>
                 </ul>
             </div>
-            
-            <div class="grid grid-3" style="margin-top: 2rem;">
-                <div class="card">
-                    <h3>Option A: Course Only</h3>
-                    <p class="package-description">Focus on skill development with our comprehensive courses</p>
-                    <ul class="bullet-list">
-                        <li>Choose from AI/ML, Data Analytics, Python, or SQL </li>
-                        <li>Access to learning materials and resources</li>
-                        <li>Certificate of completion</li>
-                    </ul>
-                </div>
-                
-                <div class="card">
-                    <h3>Option B: Course + Project + Internship</h3>
-                    <p class="package-description">Comprehensive learning with practical experience</p>
-                    <ul class="bullet-list">
-                        <li>Complete course curriculum in chosen domain</li>
-                        <li>Domain-specific project work</li>
-                        <li>Guaranteed internship placement</li>
-                    </ul>
-                </div>
-                
-                <div class="card highlight">
-                    <h3>Option C: Complete Package</h3>
-                    <p><strong>Recommended</strong></p>
-                    <ul class="bullet-list">
-                        <li>Full course curriculum with domain expertise</li>
-                        <li>Industry-aligned project experience</li>
-                        <li>Premium internship placement</li>
-                        <li>Comprehensive placement support with mentoring</li>
-                        <li>Interview scheduling with up to 5 companies</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="explanation-section" style="margin-top: 2rem;">
-                <h3>Understanding Our Four-Step Process</h3>
-                <ol class="number-list">
-                    <li><strong>Courses:</strong> Students begin with structured learning in their chosen domain (AI/ML, Data Analytics, Python, or SQL). Our courses blend theoretical foundations with practical applications.</li>
-                    <li><strong>Projects:</strong> Following course completion, students apply their knowledge to domain-specific projects that simulate real-world challenges and solutions. These projects are designed to reinforce learning and build a portfolio.</li>
-                    <li><strong>Internships:</strong> Students are placed in internships with industry partners relevant to their domain of study. These internships provide hands-on industry experience and professional networking opportunities.</li>
-                    <li><strong>Placements:</strong> Our placement process includes dedicated mentoring and interview preparation, followed by scheduling interviews with up to five potential employers, maximizing employment opportunities for graduates.</li>
-                </ol>
-            </div>
-        </section>
-        
-        <section>
-            <h2>Expected Returns</h2>
-            <ul class="bullet-list">
-                <li><strong>Student Outcomes:</strong> Enhanced employability, higher starting salaries, 85% job placement rate</li>
-                <li><strong>Institutional Benefits:</strong> Increased enrollment, stronger industry partnerships</li>
-                <li><strong>Industry Impact:</strong> Direct access to skilled talent, project solutions, research collaboration</li>
-            </ul>
-        </section>
-        
-        <section>
-            <h2>Contact</h2>
-            <div class="card">
-                <h3>Sudhir Giri</h3>
-                <p>Director of Academic Partnerships</p>
-                
-                <div class="contacts
+        </div>
+
+        <!-- Footer -->
+        <div class="border-t border-gray-200 my-6"></div>
+        <div class="text-center">
+            <p class="text-sm text-gray-600">EdAthena: Creating AI experts for the future.</p>
+            <p class="text-xs text-gray-500 mt-1">Contact: info@edathena.com | Chennai, India</p>
+        </div>
+    </div>
+</body>
+</html>
